@@ -154,7 +154,7 @@ SetGraph GraphCalc::parse_graph(std::istream &fin, std::map<int, Node> &nodes)
                 // add dependency
                 if (names.find(token) == names.end())
                 {
-                    // token not in graph
+                    // there is no token in graph
                     names[token] = counter;
                     nodes[counter] = Node(token, 0, false);
                     graph.add_vertex();

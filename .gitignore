@@ -37,4 +37,3 @@ build/
 .idea/
 *build*/
 lib/
-.vscode/settings.json

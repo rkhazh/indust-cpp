@@ -5,13 +5,12 @@
 #include <set>
 #include <vector>
 
-
-class SetGraph {
+class SetGraph
+{
 public:
-
     explicit SetGraph(size_t vertices_count);
 
-    SetGraph(const SetGraph&);
+    SetGraph(const SetGraph &);
 
     ~SetGraph() = default;
 
