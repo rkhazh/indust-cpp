@@ -1,4 +1,4 @@
-.PHONY: build  test lcov del rebuild start
+.PHONY: build test lcov del rebuild start
 build:
 	mkdir build
 	cd build && cmake ../

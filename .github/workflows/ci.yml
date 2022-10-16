@@ -1,22 +1,23 @@
 on: push
 
 jobs:
-  build:
+  build_and_test:
     runs-on: ubuntu-latest
     container: rkhazh/first_dock
     steps:
     - uses: actions/checkout@v2 
     - run: make build
+    - run: make test
     - name: Build
       uses: actions/upload-artifact@v2
       with:
         name: build-artifact
         path: build
 
-  test:
+  coverage:
     runs-on: ubuntu-latest
     container: rkhazh/first_dock
-    needs: [build]
+    needs: [build_and_test]
     steps:
     - uses: actions/checkout@v2 
     - run: mkdir build
@@ -24,22 +25,4 @@ jobs:
       with:
         name: build-artifact
         path: build
-    - run: sudo make test
-    - uses: actions/download-artifact@v2
-      with:
-        name: test-artifact
-        path: build
-
-  coverage:
-    runs-on: ubuntu-latest
-    container: rkhazh/first_dock
-    needs: [test]
-    steps:
-    - uses: actions/checkout@v2 
-    - run: mkdir build
-    - uses: actions/download-artifact@v2
-      with:
-        name: test-artifact
-        path: build
-    #- run: ls -la
     - run: make lcov
