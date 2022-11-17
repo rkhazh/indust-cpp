@@ -17,4 +17,4 @@ rebuild:
 start:
 	cd build && ./solution
 integration_test:
-	python test/test.py
+	python3 test/test.py ./inp/test.txt
