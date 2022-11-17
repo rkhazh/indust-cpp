@@ -6,6 +6,9 @@ jobs:
     container: rkhazh/first_dock
     steps:
     - uses: actions/checkout@v2 
+    - name: install dependency
+      run: apt update && apt install python3
+
     - run: make build
     - run: make test
     - run: make integration_test
