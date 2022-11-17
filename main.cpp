@@ -2,9 +2,9 @@
 #include <fstream>
 #include <iostream>
 
-int main()
+int main(int argc, char* argv[])
 {
-    std::ifstream fin = std::ifstream("../inp/test.txt");
+    std::ifstream fin = std::ifstream(argv[1]);
     if (!fin.is_open())
     {
         return 1;

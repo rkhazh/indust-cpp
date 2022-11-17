@@ -8,6 +8,7 @@ jobs:
     - uses: actions/checkout@v2 
     - run: make build
     - run: make test
+    - run: make integration_test
     - name: Build
       uses: actions/upload-artifact@v2
       with:

@@ -1,4 +1,4 @@
-.PHONY: build test lcov del rebuild start
+.PHONY: build test lcov del rebuild start integration_test
 build:
 	mkdir build
 	cd build && cmake ../
@@ -16,3 +16,5 @@ rebuild:
 	make build
 start:
 	cd build && ./solution
+integration_test:
+	python test/test.py
