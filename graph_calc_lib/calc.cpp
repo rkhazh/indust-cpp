@@ -48,12 +48,6 @@ void GraphCalc::calculate(const SetGraph &graph, std::map<int, GraphCalc::Node> 
                     break;
                 case 3:
                     nodes[cur].color = 3;
-                    while (!stack_rev.empty())
-                    {
-                        int cur_rev = stack_rev.top();
-                        stack_rev.pop();
-                        nodes[cur_rev].color = 3;
-                    }
                     break;
                 };
             }
@@ -87,15 +81,21 @@ void GraphCalc::calculate(const SetGraph &graph, std::map<int, GraphCalc::Node> 
             auto const &children = graph.get_next_vertices(cur);
             for (auto const &child : children)
             {
-                assert(nodes[child].color == 2);
-                if (!nodes[child].defined)
+                if (nodes[child].color == 2)
                 {
-                    nodes[cur].defined = false;
+                    nodes[cur].color = 2;
+                    if (!nodes[child].defined)
+                    {
+                        nodes[cur].defined = false;
+                    }
+                    nodes[cur].val += nodes[child].val;
+                }
+                else
+                {
+                    nodes[cur].color = 3;
                     break;
                 }
-                nodes[cur].val += nodes[child].val;
             }
-            nodes[cur].color = 2;
         }
     }
 }
